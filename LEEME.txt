@@ -1,0 +1,48 @@
+API DE PRODUCTOS - COMO ENCENDERLA
+=================================
+
+Necesitas tener Node.js instalado (https://nodejs.org, version LTS).
+Para comprobarlo, en una terminal escribe:  node --version
+
+PRIMERA VEZ
+-----------
+1. Descomprime este .zip (clic derecho -> Extraer todo).
+2. Abre la carpeta "api-productos" en VS Code (File -> Open Folder).
+3. Abre la terminal (Terminal -> New Terminal) y escribe:
+
+      npm install
+
+   (instala Express; solo se hace una vez)
+
+4. Enciende la API:
+
+      node index.js
+
+   Si aparece "API corriendo en http://localhost:3000", ya esta lista.
+   NO cierres esa terminal. Para apagar la API: Ctrl + C
+
+LAS SIGUIENTES VECES
+--------------------
+Solo abre la carpeta en VS Code y escribe:  node index.js
+
+EN POSTMAN
+----------
+La variable baseUrl de la coleccion debe ser:  http://localhost:3000
+(con http, sin la "s")
+
+RUTAS DISPONIBLES
+-----------------
+GET    /productos              -> lista todos
+GET    /productos?max=50000    -> filtra por precio maximo
+GET    /productos/1            -> un producto por id
+POST   /productos              -> crea (body: nombre, precio, stock)
+PUT    /productos/1            -> reemplaza todo (nombre, precio, stock)
+PATCH  /productos/1            -> cambia solo lo que mandes (ej. stock)
+DELETE /productos/1            -> borra
+
+ERRORES COMUNES
+---------------
+'node' no se reconoce ...      -> instala Node.js y reinicia VS Code
+Cannot find module 'express'   -> corre "npm install" dentro de la carpeta
+EADDRINUSE :::3000             -> ya hay otra API encendida; ciérrala (Ctrl + C)
+ECONNREFUSED (en Postman)      -> la API esta apagada; corre "node index.js"
