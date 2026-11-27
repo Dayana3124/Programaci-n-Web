@@ -39,7 +39,13 @@ CREATE TABLE IF NOT EXISTS usuarios (
 
 -- password guarda el HASH, nunca la clave:
 --   await bcrypt.hash(password, 10)
--- Por eso los usuarios se crean con POST /registro, no aqui.
---
--- Para volver admin a un usuario ya registrado:
---   UPDATE usuarios SET rol = 'admin' WHERE email = 'admin@tienda.com';
+-- Los usuarios normales se crean con POST /registro.
+
+-- Administrador de prueba, para probar DELETE en Postman.
+--   email: admin@tienda.com   clave: admin123
+-- (el texto raro es el hash de "admin123" hecho con bcrypt)
+INSERT IGNORE INTO usuarios (email, password, rol) VALUES
+  ('admin@tienda.com', '$2b$10$tHmhh473SpCT7kzbGdQ.HuskXQoXeGnDBzstdgE31sCjV8KwIMWsG', 'admin');
+
+-- Para volver admin a cualquier otro usuario ya registrado:
+--   UPDATE usuarios SET rol = 'admin' WHERE email = 'correo@ejemplo.com';

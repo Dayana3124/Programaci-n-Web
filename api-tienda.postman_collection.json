@@ -2,7 +2,7 @@
   "info": {
     "name": "API Tienda - JWT",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "Correr en orden. Antes del paso 3b, volver admin a admin@tienda.com en MySQL:\nUPDATE usuarios SET rol = 'admin' WHERE email = 'admin@tienda.com';"
+    "description": "Correr las carpetas en orden y darle Send a cada peticion.\nEl administrador ya existe (lo crea tienda.sql): admin@tienda.com / admin123.\nLos tokens se guardan solos al hacer Login."
   },
   "variable": [
     {
@@ -157,50 +157,6 @@
               "type": "noauth"
             }
           }
-        },
-        {
-          "name": "Registro admin (201)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Responde 201\", () => pm.response.to.have.status(201));"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/registro",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "registro"
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"email\": \"admin@tienda.com\",\n  \"password\": \"clave123\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "auth": {
-              "type": "noauth"
-            }
-          }
         }
       ]
     },
@@ -329,7 +285,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"admin@tienda.com\",\n  \"password\": \"clave123\"\n}",
+              "raw": "{\n  \"email\": \"admin@tienda.com\",\n  \"password\": \"admin123\"\n}",
               "options": {
                 "raw": {
                   "language": "json"

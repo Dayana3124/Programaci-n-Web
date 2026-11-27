@@ -52,12 +52,16 @@ Programaci-n-Web/
 
 El token se envía en Postman en **Authorization → Bearer Token**.
 
-## Crear un admin
+## Usuarios y admin
 
-Todo usuario nuevo queda con rol `usuario`. Para volver admin a uno ya registrado:
+Todo usuario nuevo de `/registro` queda con rol `usuario`.
+`tienda.sql` ya crea un administrador de prueba:
+**admin@tienda.com / admin123**.
+
+Para volver admin a otro usuario ya registrado:
 
 ```sql
-UPDATE usuarios SET rol = 'admin' WHERE email = 'admin@tienda.com';
+UPDATE usuarios SET rol = 'admin' WHERE email = 'correo@ejemplo.com';
 ```
 
 Después hay que volver a hacer login, porque el rol viaja dentro del token.
@@ -65,8 +69,7 @@ Después hay que volver a hacer login, porque el rol viaja dentro del token.
 ## Pruebas en Postman
 
 Importa `api-tienda.postman_collection.json` y corre las carpetas en orden.
-Los tokens se guardan solos al hacer login. Antes de la carpeta **2. Login**,
-ejecuta el `UPDATE` de arriba para `admin@tienda.com`.
+Los tokens se guardan solos al hacer login.
 
 - Sin token → **401**
 - Usuario normal borra → **403**

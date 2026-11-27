@@ -1,2 +1,14 @@
+# Dependencias: se reinstalan con "npm install"
 node_modules/
+
+# Claves reales: NUNCA van a GitHub (la plantilla es .env.example)
 .env
+
+# Capturas de Postman: se entregan aparte
+capturas/
+
+# Archivos del sistema y del editor
+.vscode/
+.DS_Store
+Thumbs.db
+npm-debug.log*
